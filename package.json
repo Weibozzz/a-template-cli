@@ -1,0 +1,21 @@
+{
+  "name": "a-template-cli",
+  "version": "1.0.0",
+  "description": "支付宝小程序自动生成 page 和 component 模板 cli",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "a-cli": "bin/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "commander": "^4.0.1",
+    "handlebars": "^4.5.1",
+    "ora": "^4.0.2"
+  }
+}
