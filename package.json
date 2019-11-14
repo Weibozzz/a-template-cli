@@ -9,6 +9,10 @@
   "bin": {
     "a-cli": "bin/index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Weibozzz/a-template-cli.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
