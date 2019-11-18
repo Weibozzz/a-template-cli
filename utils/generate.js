@@ -4,7 +4,8 @@ const fs = require('fs')
 const { spinner } = require('../utils/spinner')
 const { axmlStr, acssStr, jsonStr, jsStr } = require('../utils/str')
 
-function createFile (filename, isComponent = false) {
+function createFile (filename, arg) {
+  const { isComponent = false, isTs = false } = arg
   const dirPath = path.join(process.cwd(), filename)
   if (fs.existsSync(dirPath)) {
     spinner.fail(chalk.red(dirPath + ' directory is exist!!'))
@@ -15,7 +16,7 @@ function createFile (filename, isComponent = false) {
     createTemplateFile(args).axml()
     createTemplateFile(args).acss()
     createTemplateFile(args).json()
-    createTemplateFile(args).js()
+    createTemplateFile(args).js(isTs)
   }
 }
 function create (dirPath, suffix, data) {
@@ -43,12 +44,12 @@ function createTemplateFile (args) {
           create (dirPath, 'json', data)
         })
     },
-    js(){
+    js (isTs) {
       return jsStr(filename, isComponent)
         .then(data => {
-          create (dirPath, 'js', data)
+          create(dirPath, isTs ? 'ts' : 'js', data)
         })
-    },
+    }
   };
 }
 module.exports = {

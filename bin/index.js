@@ -18,12 +18,18 @@ program.on('--help', function() {
   console.log('  Examples:');
   console.log('');
   console.log('    $ a-cli -P page-example');
+  console.log('    $ a-cli -PT page-example');
   console.log('    $ a-cli -C component-example');
+  console.log('    $ a-cli -CT component-example');
   console.log('');
   console.log(chalk.green('    # create a new page-example directory with an template'));
-  console.log('    $ vue-g g my-component');
+  console.log('    $ a-cli -P my-page');
   console.log(chalk.green('    # create a new component-example directory with an template'));
-  console.log('    $ vue-g g libs my-component');
+  console.log('    $ a-cli -C my-component');
+  console.log(chalk.green('    # create a new page-example directory with an ts template'));
+  console.log('    $ a-cli -PT my-page');
+  console.log(chalk.green('    # create a new component-example directory with an ts template'));
+  console.log('    $ a-cli -CT my-component');
 });
 
 program.parse(process.argv);
@@ -36,19 +42,19 @@ program.parse(process.argv);
 })()
 
 
-console.log(program.pages);
 spinner.start('Generating, please wait......');
 console.log('');
+
 if(program.pages === true){
   // 创建 page 文件
   const dirName = program.args[0]
-  createFile(dirName)
+  createFile(dirName, { isTs: program.ts })
   return ;
 }
 if(program.component === true){
   // 创建 component 文件
   const dirName = program.args[0]
-  createFile(dirName, true)
+  createFile(dirName, { isTs: program.ts, isComponent: true })
   return ;
 }
 

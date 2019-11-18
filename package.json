@@ -1,6 +1,6 @@
 {
   "name": "a-template-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "支付宝小程序自动生成 page 和 component 模板 cli",
   "main": "index.js",
   "scripts": {
