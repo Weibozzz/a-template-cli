@@ -4,3 +4,17 @@
 npm install a-template-cli -g
 a-cli --help
 ```
+## 创建 page
+
+```bash
+a-cli -P filename
+# use ts
+a-cli -PT filename
+```
+## 创建 component
+
+```bash
+a-cli -C filename
+# use ts
+a-cli -CT filename
+```
