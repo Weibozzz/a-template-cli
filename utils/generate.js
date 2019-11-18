@@ -2,10 +2,8 @@ const chalk = require('chalk')
 const path = require('path')
 const fs = require('fs')
 const { spinner } = require('../utils/spinner')
-const { axmlStr } = require('../utils/str')
-const obj = {
-  createFile: createFile
-}
+const { axmlStr, acssStr, jsonStr, jsStr } = require('../utils/str')
+
 function createFile (filename, isComponent = false) {
   const dirPath = path.join(process.cwd(), filename)
   if (fs.existsSync(dirPath)) {
@@ -13,14 +11,46 @@ function createFile (filename, isComponent = false) {
   } else {
     fs.mkdirSync(dirPath)
     spinner.succeed(dirPath + ' directory generated successfully!')
-    createAxmlFile(dirPath, filename, isComponent)
+    const args = [dirPath, filename, isComponent]
+    createTemplateFile(args).axml()
+    createTemplateFile(args).acss()
+    createTemplateFile(args).json()
+    createTemplateFile(args).js()
   }
 }
-function createAxmlFile (dirPath, filename, isComponent) {
-  axmlStr(filename, isComponent)
-    .then(data => {
-      fs.writeFileSync(dirPath + '/index.axml', data)
-      spinner.succeed(dirPath + '/index.axml generated successfully!')
-    })
+function create (dirPath, suffix, data) {
+  fs.writeFileSync(dirPath + `/index.${suffix}`, data)
+  spinner.succeed(dirPath + `/index.${suffix} generated successfully!`)
 }
-module.exports = obj
+function createTemplateFile (args) {
+  const [dirPath, filename, isComponent] = args
+  return {
+    axml(){
+      return axmlStr(filename, isComponent)
+        .then(data => {
+          create (dirPath, 'axml', data)
+        })
+    },
+    acss(){
+      return acssStr(filename, isComponent)
+        .then(data => {
+          create (dirPath, 'acss', data)
+        })
+    },
+    json(){
+      return jsonStr(filename, isComponent)
+        .then(data => {
+          create (dirPath, 'json', data)
+        })
+    },
+    js(){
+      return jsStr(filename, isComponent)
+        .then(data => {
+          create (dirPath, 'js', data)
+        })
+    },
+  };
+}
+module.exports = {
+  createFile: createFile
+}

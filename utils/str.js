@@ -18,5 +18,32 @@ module.exports = {
         resolve(afterStr)
       })
     });
-  }
+  },
+  acssStr(filename, isComponent){
+    return new Promise((resolve, reject) => {
+      fs.readFile(resolvePath('acss', isComponent), (err, data) => {
+        if (err) throw err;
+        const afterStr = template(data)({filename})
+        resolve(afterStr)
+      })
+    });
+  },
+  jsonStr(filename, isComponent){
+    return new Promise((resolve, reject) => {
+      fs.readFile(resolvePath('json', isComponent), (err, data) => {
+        if (err) throw err;
+        const afterStr = template(data)({filename})
+        resolve(afterStr)
+      })
+    });
+  },
+  jsStr(filename, isComponent){
+    return new Promise((resolve, reject) => {
+      fs.readFile(resolvePath('js', isComponent), (err, data) => {
+        if (err) throw err;
+        const afterStr = template(data)({filename})
+        resolve(afterStr)
+      })
+    });
+  },
 }
