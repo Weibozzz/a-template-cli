@@ -11,6 +11,7 @@ program
   .usage('<command> [options]')
   .option('-P, --pages', 'generate pages')
   .option('-C, --component', 'generate component')
+  .option('-T, --ts', 'use ts')
 
 
 program.on('--help', function() {
