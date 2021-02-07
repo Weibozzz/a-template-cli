@@ -1,7 +1,7 @@
 {
   "name": "a-template-cli",
-  "version": "1.0.4",
-  "description": "支付宝小程序自动生成 page 和 component 模板 cli",
+  "version": "1.0.5",
+  "description": "快速生成模板 cli vue/支付宝小程序",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
