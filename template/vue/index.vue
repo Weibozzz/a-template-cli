@@ -1,7 +1,7 @@
 <template>
-  <View class="template-wrapper">
+  <div class="template-wrapper">
 
-  </View>
+  </div>
 </template>
 <script src="./index.js"></script>
 <style lang="scss" scoped>
