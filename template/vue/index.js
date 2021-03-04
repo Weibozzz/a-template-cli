@@ -6,7 +6,7 @@ import {
 } from 'vuex'
 export default {
   components: {},
-  mixins: {},
+  mixins: [],
   data () {
     return {
     }
