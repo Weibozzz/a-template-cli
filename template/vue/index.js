@@ -13,7 +13,7 @@ export default {
   },
   computed: {
     ...mapState([]),
-    // [key]: '[module]/[state]',
+    // [key]: state => state.[module].[state],
     ...mapState({}),
     ...mapGetters([])
   },
